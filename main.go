@@ -1,15 +1,20 @@
 package main
 
 import (
+	// "./models"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
+	
+	
 )
 
 func main() {
 
 	// инициализируем новый маршрутизатор Gin
 	route := gin.Default()
+	
+	// подключение к БД
+	// models.ConnectDB() // new
 
 	// Далее определим GET маршрут до пустого endpoint.Чтобы определить маршрут, нам нужно указать две вещи:
 	// 1.Конечную точку (endpoint) — это путь, который клиент хочет получить.
