@@ -4,17 +4,20 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
+// var db *gorm.DB
+var DB *gorm.DB
 
 func ConnectDB() *gorm.DB {
 	// Внутри этой функции создаём новое соединение методом gorm.Open,
 	//  где указываем какой тип базы данных мы хотим использовать и как получить к ней доступ.
 	//  В настоящее время Gorm поддерживает только четыре типа баз данных SQL
 
-	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=musicstore password=dev sslmode=disable")
+	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=postgres password=dev sslmode=disable")
 	if err != nil {
 		panic("Не удалось подключиться к базе данных")
 	}
 	db.AutoMigrate(&Track{})
 
-	return db
+	DB = db
+	return DB
 }
